@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home Page</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body style="background-color: #f0f1f2;">
+	<!-- Start Navbar -->
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Products System</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<!-- End Navabr -->
+<div class="container p-5">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<div class="card">
+					
+					<div class="card-header">
+						<a href="load_form" class="btn btn-primary">Add Products</a>
+					</div>
+
+					<div class="card-body">
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col"><a th:href="@{'/page/'+${pageNo}+'?sortField=id&sortDir='+${revSortDir}}">Id</a></th>
+									<th scope="col"><a th:href="@{'/page/'+${pageNo}+'?sortField=productName&sortDir='+${revSortDir}}">Name</a></th>
+									<th scope="col">Description</th>
+									<th scope="col"><a th:href="@{'/page/'+${pageNo}+'?sortField=price&sortDir='+${revSortDir}}">Price</a></th>
+									<th scope="col">Quantity</th>
+									<th scope="col">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr th:each="p : ${all_products}">
+									<th scope="row">[[${p.id}]]</th>
+									<td>[[${p.productName}]]</td>
+									<td>[[${p.description}]]</td>
+									<td>[[${p.price}]]</td>
+									<td>[[${p.quantity}]]</td>
+									<td><a th:href="@{'/edit_form/'+${p.id}}"
+										class="btn btn-sm btn-primary">Edit </a> <a
+										th:href="@{'/delete/'+${p.id}}" class="btn btn-sm btn-danger">Delete
+									</a></td>
+								</tr>
+
+
+							</tbody>
+						</table>
+
+					</div>
+
+					
+
+
+
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
